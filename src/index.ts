@@ -5,14 +5,18 @@ import express from "express";
 const main = async () => {
   const conn = new DataSource({
     type: "postgres",
-    host: "localhost",
+    host: "database-1.cy6ncsi7tddz.ap-south-1.rds.amazonaws.com",
+    // host:"",
     port: 5432,
     username: "postgres",
-    password: "Hari@2003",
+    password: "Hari2003",
     database: "bank",
     logging: true,
     synchronize: false,
     entities: [Branches],
+    ssl: {
+      rejectUnauthorized: false,
+    }
   });
   await conn.initialize();
 
