@@ -10,14 +10,17 @@ const express_1 = __importDefault(require("express"));
 const main = async () => {
     const conn = new typeorm_1.DataSource({
         type: "postgres",
-        host: "localhost",
+        host: "database-1.cy6ncsi7tddz.ap-south-1.rds.amazonaws.com",
         port: 5432,
         username: "postgres",
-        password: "Hari@2003",
+        password: "Hari2003",
         database: "bank",
         logging: true,
         synchronize: false,
         entities: [Branches_1.Branches],
+        ssl: {
+            rejectUnauthorized: false,
+        }
     });
     await conn.initialize();
     const api = (0, express_1.default)();
